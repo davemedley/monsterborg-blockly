@@ -221,7 +221,7 @@ img {
   background-size: contain;
   opacity: 0.08;
   pointer-events: none;
-  z-index: 0;
+  z-index: 10;
 }
 
 /* Right sidebar panels */
