@@ -210,6 +210,18 @@ img {
   border-radius: var(--radius-md);
   background: var(--color-surface);
   overflow: hidden;
+  position: relative;
+}
+
+#blocklyDiv::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSZnZUuGfdO71hqd12Qbi3YM-t9OdtK-QtgaCxBtsnv76roFndBNpCmI4&s=10') center center no-repeat;
+  background-size: contain;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* Right sidebar panels */
