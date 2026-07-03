@@ -606,6 +606,10 @@ button:disabled,
   z-index: 900;
 }
 
+.dialog-overlay[hidden] {
+  display: none;
+}
+
 .dialog {
   background: var(--color-surface);
   border-radius: var(--radius-lg);

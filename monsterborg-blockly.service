@@ -8,6 +8,7 @@ User=monsterborg
 Group=monsterborg
 WorkingDirectory=/opt/monsterborg-blockly
 Environment="PATH=/opt/monsterborg-blockly/venv/bin:/usr/bin:/bin"
+Environment="PYTHONPATH=/opt/monsterborg-blockly"
 ExecStart=/opt/monsterborg-blockly/venv/bin/python3 -m backend.app
 Restart=on-failure
 RestartSec=5
