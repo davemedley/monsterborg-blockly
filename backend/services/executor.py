@@ -96,9 +96,6 @@ class ProgramExecutor:
             
             logger.info(f"Executing program with {self.total_blocks} commands")
             
-            # Set LED to green (running)
-            self.controller.set_leds(0, 1, 0)
-            
             # Execute each command
             for i, command in enumerate(commands):
                 # Check for stop signal
@@ -127,8 +124,6 @@ class ProgramExecutor:
             if not self.should_stop and not self.error_message:
                 self.status = 'completed'
                 logger.info("Program execution completed successfully")
-                # Set LED to blue (complete)
-                self.controller.set_leds(0, 0, 1)
             else:
                 self.status = 'stopped' if self.should_stop else 'error'
                 # Set LED to red (stopped/error)
@@ -142,8 +137,8 @@ class ProgramExecutor:
         
         finally:
             self.is_running = False
-            # Ensure motors are off
-            self.controller.emergency_stop()
+            # Ensure motors are off but don't override LEDs on normal completion
+            self.controller.motors_off()
     
     def _execute_command(self, command):
         """
