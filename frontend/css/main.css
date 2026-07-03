@@ -79,6 +79,11 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
 html {
   font-size: var(--font-size-body);
   -webkit-text-size-adjust: 100%;
@@ -92,7 +97,6 @@ body {
   line-height: 1.5;
   color: var(--color-text-primary);
   background-color: var(--color-bg);
-  overflow-x: hidden;
 }
 
 h1, h2, h3 {
@@ -137,11 +141,12 @@ img {
   display: grid;
   grid-template-columns: 1fr 300px;
   grid-template-rows: 1fr;
-  min-height: 100vh;
+  height: 100%;
   max-width: 1920px;
   margin: 0 auto;
   padding: var(--spacing-md);
   gap: var(--spacing-md);
+  overflow: hidden;
 }
 
 .workspace-section {
@@ -977,9 +982,16 @@ img.camera-feed {
    Responsive Layout - Tablet (768px+)
    -------------------------------------------------------------------------- */
 @media screen and (max-width: 768px) {
+  html, body {
+    overflow: auto;
+  }
+
   .app-layout {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
+    height: auto;
+    min-height: 100%;
+    overflow: visible;
   }
 
   .side-panel {
