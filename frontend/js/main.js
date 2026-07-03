@@ -111,6 +111,9 @@
                 UI.setWorkspace(workspace);
             }
         }
+        if (typeof ManualControls !== 'undefined' && ManualControls.init) {
+            ManualControls.init();
+        }
     }
 
     /**
