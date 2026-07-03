@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MonsterBorg Blockly</title>
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Blockly CDN -->
+    <script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
+    <script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
+    <script src="https://unpkg.com/blockly/msg/en.js"></script>
+
+    <!-- Socket.IO CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+    <!-- Connection status indicator -->
+    <div id="connectionStatus" class="connection-status connected" role="status" aria-live="polite" aria-label="Connection status">
+        <span class="status-dot"></span>
+        <span class="status-text">Connected</span>
+    </div>
+
+    <!-- Main application layout -->
+    <main class="app-layout" role="main">
+
+        <!-- Blockly Workspace Section -->
+        <section class="workspace-section" aria-label="Programming workspace">
+            <header class="section-header">
+                <h1 class="app-title">MonsterBorg Blockly</h1>
+                <div class="workspace-controls" role="toolbar" aria-label="Workspace controls">
+                    <button id="undoBtn" class="toolbar-btn" aria-label="Undo" title="Undo">
+                        &#x21A9;
+                    </button>
+                    <button id="redoBtn" class="toolbar-btn" aria-label="Redo" title="Redo">
+                        &#x21AA;
+                    </button>
+                    <button id="zoomInBtn" class="toolbar-btn" aria-label="Zoom in" title="Zoom in">
+                        +
+                    </button>
+                    <button id="zoomOutBtn" class="toolbar-btn" aria-label="Zoom out" title="Zoom out">
+                        &minus;
+                    </button>
+                    <span id="zoomLevel" class="zoom-level" aria-live="polite">100%</span>
+                </div>
+            </header>
+
+            <!-- Blockly workspace container -->
+            <div id="blocklyDiv" aria-label="Block workspace"></div>
+
+            <!-- Blockly toolbox definition -->
+            <xml id="toolbox" style="display: none">
+                <category name="Movement" colour="120">
+                    <block type="move_forward"></block>
+                    <block type="move_backward"></block>
+                    <block type="turn_left"></block>
+                    <block type="turn_right"></block>
+                    <block type="spin_circle"></block>
+                    <block type="custom_move"></block>
+                </category>
+                <category name="LEDs" colour="60">
+                    <block type="set_led_color"></block>
+                    <block type="led_preset"></block>
+                    <block type="led_battery"></block>
+                </category>
+                <category name="Timing" colour="30">
+                    <block type="wait"></block>
+                    <block type="repeat"></block>
+                </category>
+                <category name="Patterns" colour="270">
+                    <block type="pattern_square"></block>
+                    <block type="pattern_triangle"></block>
+                    <block type="pattern_circle"></block>
+                </category>
+                <category name="Control" colour="0">
+                    <block type="stop"></block>
+                    <block type="emergency_stop"></block>
+                </category>
+            </xml>
+
+            <!-- Pre-placed Start block configuration -->
+            <xml id="startBlocks" style="display: none">
+                <block type="start" x="30" y="30" deletable="false" movable="true"></block>
+            </xml>
+        </section>
+
+        <!-- Side Panel: Controls, Camera, Programs -->
+        <aside class="side-panel" aria-label="Controls and information">
+
+            <!-- Control Panel -->
+            <section class="control-panel" aria-label="Program controls">
+                <h2 class="panel-title">Controls</h2>
+                <div class="control-buttons" role="toolbar" aria-label="Program control buttons">
+                    <button id="runBtn" class="control-btn run-btn" aria-label="Run program" title="Run program">
+                        <span class="btn-icon" aria-hidden="true">&#9654;</span>
+                        <span class="btn-label">Run</span>
+                    </button>
+                    <button id="stopBtn" class="control-btn stop-btn" aria-label="Stop program" title="Stop program">
+                        <span class="btn-icon" aria-hidden="true">&#9632;</span>
+                        <span class="btn-label">Stop</span>
+                    </button>
+                    <button id="saveBtn" class="control-btn save-btn" aria-label="Save program" title="Save program">
+                        <span class="btn-icon" aria-hidden="true">&#128190;</span>
+                        <span class="btn-label">Save</span>
+                    </button>
+                    <button id="loadBtn" class="control-btn load-btn" aria-label="Load program" title="Load program">
+                        <span class="btn-icon" aria-hidden="true">&#128194;</span>
+                        <span class="btn-label">Load</span>
+                    </button>
+                    <button id="clearBtn" class="control-btn clear-btn" aria-label="Clear workspace" title="Clear workspace">
+                        <span class="btn-icon" aria-hidden="true">&#128465;</span>
+                        <span class="btn-label">Clear</span>
+                    </button>
+                </div>
+
+                <!-- Execution progress indicator -->
+                <div id="progressIndicator" class="progress-indicator" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Program progress" hidden>
+                    <div class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+                    <span id="progressText" class="progress-text">Block 0 of 0</span>
+                </div>
+            </section>
+
+            <!-- Camera Feed -->
+            <section class="camera-panel" aria-label="Camera feed">
+                <h2 class="panel-title">Camera</h2>
+                <div class="camera-container">
+                    <img
+                        id="cameraFeed"
+                        class="camera-feed"
+                        src="/api/camera/stream"
+                        alt="Live camera feed from the robot"
+                        width="240"
+                        height="192"
+                    >
+                    <div id="cameraPlaceholder" class="camera-placeholder" hidden>
+                        <span>Camera unavailable</span>
+                    </div>
+                </div>
+                <button id="takePhotoBtn" class="control-btn photo-btn" aria-label="Take photo" title="Take a photo">
+                    <span class="btn-icon" aria-hidden="true">&#128247;</span>
+                    <span class="btn-label">Take Photo</span>
+                </button>
+                <!-- Photo confirmation thumbnail -->
+                <div id="photoConfirmation" class="photo-confirmation" hidden aria-live="polite">
+                    <img id="photoThumb" class="photo-thumb" alt="Captured photo thumbnail" width="120" height="96">
+                    <span>Photo saved!</span>
+                </div>
+            </section>
+
+            <!-- Program Manager -->
+            <section class="program-panel" aria-label="Program manager">
+                <h2 class="panel-title">My Programs</h2>
+                <div id="programList" class="program-list" role="list" aria-label="Saved programs">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <h3 class="panel-subtitle">Examples</h3>
+                <div id="exampleList" class="program-list examples" role="list" aria-label="Example programs">
+                    <!-- Populated dynamically -->
+                </div>
+            </section>
+
+        </aside>
+    </main>
+
+    <!-- Persistent Emergency Stop Button -->
+    <button
+        id="emergencyStopBtn"
+        class="emergency-stop-btn"
+        aria-label="Emergency stop"
+        title="Emergency stop - stops the robot immediately"
+    >
+        STOP
+    </button>
+
+    <!-- Dialog overlays -->
+    <div id="dialogOverlay" class="dialog-overlay" hidden aria-hidden="true">
+        <div id="dialogBox" class="dialog-box" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+            <h2 id="dialogTitle" class="dialog-title"></h2>
+            <div id="dialogContent" class="dialog-content"></div>
+            <div class="dialog-actions">
+                <button id="dialogConfirm" class="dialog-btn confirm-btn">OK</button>
+                <button id="dialogCancel" class="dialog-btn cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Local JavaScript modules -->
+    <script src="js/blocks/movement.js"></script>
+    <script src="js/blocks/leds.js"></script>
+    <script src="js/blocks/timing.js"></script>
+    <script src="js/blocks/patterns.js"></script>
+    <script src="js/blocks/control.js"></script>
+    <script src="js/generators/json_generator.js"></script>
+    <script src="js/websocket.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

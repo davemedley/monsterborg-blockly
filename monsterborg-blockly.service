@@ -1,0 +1,20 @@
+[Unit]
+Description=MonsterBorg Blockly Web Interface
+After=network.target
+
+[Service]
+Type=simple
+User=monsterborg
+Group=monsterborg
+WorkingDirectory=/opt/monsterborg-blockly
+Environment="PATH=/opt/monsterborg-blockly/venv/bin:/usr/bin:/bin"
+ExecStart=/opt/monsterborg-blockly/venv/bin/python3 -m backend.app
+Restart=on-failure
+RestartSec=5
+StartLimitBurst=3
+StartLimitIntervalSec=30
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

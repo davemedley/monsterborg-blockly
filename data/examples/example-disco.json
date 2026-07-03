@@ -1,0 +1,80 @@
+{
+  "id": "example-disco",
+  "name": "Disco Lights",
+  "description": "Flash through LED colors with pauses",
+  "difficulty": "intermediate",
+  "blocks": [
+    {"type": "repeat", "count": 3, "blocks": [
+      {"type": "led_preset", "color": "red"},
+      {"type": "wait", "duration": 0.5},
+      {"type": "led_preset", "color": "green"},
+      {"type": "wait", "duration": 0.5},
+      {"type": "led_preset", "color": "blue"},
+      {"type": "wait", "duration": 0.5}
+    ]},
+    {"type": "led_preset", "color": "off"}
+  ],
+  "workspace_state": {
+    "blocks": {
+      "languageVersion": 0,
+      "blocks": [
+        {
+          "type": "start",
+          "x": 30,
+          "y": 30,
+          "deletable": false,
+          "next": {
+            "block": {
+              "type": "repeat",
+              "fields": {"count": 3},
+              "inputs": {
+                "blocks": {
+                  "block": {
+                    "type": "led_preset",
+                    "fields": {"color": "red"},
+                    "next": {
+                      "block": {
+                        "type": "wait",
+                        "fields": {"duration": 0.5},
+                        "next": {
+                          "block": {
+                            "type": "led_preset",
+                            "fields": {"color": "green"},
+                            "next": {
+                              "block": {
+                                "type": "wait",
+                                "fields": {"duration": 0.5},
+                                "next": {
+                                  "block": {
+                                    "type": "led_preset",
+                                    "fields": {"color": "blue"},
+                                    "next": {
+                                      "block": {
+                                        "type": "wait",
+                                        "fields": {"duration": 0.5}
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "next": {
+                "block": {
+                  "type": "led_preset",
+                  "fields": {"color": "off"}
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

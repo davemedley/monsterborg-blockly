@@ -1,0 +1,430 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Create backend/config_loader.py utility module": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680459597
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680478355
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782681929743
+      }
+    ],
+    "1.2 Migrate all backend modules to use config_loader": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680459690
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782681940192
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782682584651
+      }
+    ],
+    "1.3 Fix executor config key (safety → robot)": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680459724
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782681941125
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782682585418
+      }
+    ],
+    "1.4 Fix ThunderBorg import in robot_controller": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680459768
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782681942351
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782682586348
+      }
+    ],
+    "2. Checkpoint - Backend bug fixes": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680459797
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683254510
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683487212
+      }
+    ],
+    "3.1 Implement backend/services/camera_service.py": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680459821
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782682594633
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683235269
+      }
+    ],
+    "4.1 Create frontend/index.html": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680459846
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782682595441
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683235919
+      }
+    ],
+    "4.2 Create frontend/css/main.css": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680459879
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782682596241
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683236722
+      }
+    ],
+    "5.1 Create frontend/js/blocks/movement.js": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680459904
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683527852
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683607928
+      }
+    ],
+    "5.2 Create frontend/js/blocks/leds.js": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680459927
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683528525
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683608670
+      }
+    ],
+    "5.3 Create frontend/js/blocks/timing.js": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680459951
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683529269
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683609459
+      }
+    ],
+    "5.4 Create frontend/js/blocks/patterns.js": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680459985
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683530026
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683610186
+      }
+    ],
+    "5.5 Create frontend/js/blocks/control.js": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680460031
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683530901
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683611058
+      }
+    ],
+    "5.6 Create frontend/js/generators/json_generator.js": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680460054
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683625810
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683819209
+      }
+    ],
+    "6.1 Create frontend/js/websocket.js": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680460077
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683626593
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683820167
+      }
+    ],
+    "6.2 Create frontend/js/ui.js": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680460096
+      },
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683833593
+      }
+    ],
+    "6.3 Create frontend/js/main.js": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680460120
+      },
+      {
+        "executionId": "1bd327da-bb93-425f-a811-1002e35c0106",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782728044672
+      },
+      {
+        "executionId": "1bd327da-bb93-425f-a811-1002e35c0106",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782728131734
+      }
+    ],
+    "7. Checkpoint - Frontend and camera complete": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680460145
+      },
+      {
+        "executionId": "1bd327da-bb93-425f-a811-1002e35c0106",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782728221422
+      },
+      {
+        "executionId": "1bd327da-bb93-425f-a811-1002e35c0106",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782729053038
+      }
+    ],
+    "8.1 Create monsterborg-blockly.service systemd unit file": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680460169
+      },
+      {
+        "executionId": "1bd327da-bb93-425f-a811-1002e35c0106",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782729062095
+      },
+      {
+        "executionId": "1bd327da-bb93-425f-a811-1002e35c0106",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782729209283
+      }
+    ],
+    "8.2 Create enhanced setup.sh": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680460190
+      },
+      {
+        "executionId": "1bd327da-bb93-425f-a811-1002e35c0106",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782729062817
+      },
+      {
+        "executionId": "1bd327da-bb93-425f-a811-1002e35c0106",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782729210016
+      }
+    ],
+    "8.3 Add static IP documentation to README": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680460214
+      },
+      {
+        "executionId": "1bd327da-bb93-425f-a811-1002e35c0106",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782729063676
+      },
+      {
+        "executionId": "1bd327da-bb93-425f-a811-1002e35c0106",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782729211159
+      }
+    ],
+    "9. Final checkpoint - All components integrated": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782680460237
+      },
+      {
+        "executionId": "1bd327da-bb93-425f-a811-1002e35c0106",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782729215662
+      },
+      {
+        "executionId": "1bd327da-bb93-425f-a811-1002e35c0106",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782729335387
+      }
+    ],
+    "1. Backend bug fixes and shared utilities": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782682586381
+      }
+    ],
+    "3. Camera service implementation": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683235299
+      }
+    ],
+    "4. Frontend structure and HTML": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683236749
+      }
+    ],
+    "1.5 Write property tests for config_loader and executor": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683523858
+      }
+    ],
+    "3.2 Write property tests for camera service": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683622127
+      }
+    ],
+    "5. Frontend block definitions and generators": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683819243
+      }
+    ],
+    "5.7 Write property tests for block definitions and generators": [
+      {
+        "executionId": "06f5e997-8d21-47af-95c7-b11ef3416df2",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782683832722
+      }
+    ],
+    "8. Deployment automation": [
+      {
+        "executionId": "1bd327da-bb93-425f-a811-1002e35c0106",
+        "chatSessionId": "sess_d76fbcf1-321d-40bf-8f6a-8409d4dfad2f",
+        "timestamp": 1782729211184
+      }
+    ]
+  }
+}

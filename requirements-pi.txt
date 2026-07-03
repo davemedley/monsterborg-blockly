@@ -1,0 +1,20 @@
+# Requirements for Raspberry Pi (Python 3.7 compatible)
+# Use this file when installing on the actual Raspberry Pi
+
+# Web Framework
+Flask==2.2.5
+Flask-CORS==4.0.0
+Flask-SocketIO==5.3.5
+
+# WebSocket Support
+python-socketio==5.7.2
+python-engineio==4.3.4
+
+# Camera Support (Raspberry Pi specific - install via apt if available)
+# picamera2 is installed via apt on Bullseye+, not pip on Buster
+opencv-python-headless==4.5.5.64
+numpy==1.21.6
+
+# Utilities
+python-dotenv==0.21.1
+pyyaml==6.0.1

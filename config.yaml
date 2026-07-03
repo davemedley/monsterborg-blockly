@@ -1,0 +1,64 @@
+# MonsterBorg Blockly Configuration
+
+# Server Settings
+server:
+  host: "0.0.0.0"
+  port: 8080
+  debug: false
+  secret_key: "change-this-in-production"
+
+# Robot Settings
+robot:
+  # ThunderBorg I2C address
+  i2c_address: 0x15
+  
+  # Power settings
+  voltage_in: 12.0
+  voltage_out: 11.4  # 95% of input for safety
+  
+  # Calibration values (adjust for your robot)
+  time_forward_1m: 2.5  # Seconds to move 1 meter forward at full power (calibrate for your surface)
+  time_spin_360: 1.10    # Seconds to spin 360 degrees
+  
+  # Safety settings
+  max_execution_time: 300  # 5 minutes maximum
+  enable_failsafe: true
+  
+  # Battery monitoring
+  battery_min: 7.0
+  battery_max: 12.6
+
+# Camera Settings
+camera:
+  enabled: true
+  width: 240
+  height: 192
+  framerate: 30
+  display_rate: 10
+  jpeg_quality: 80
+  flipped: true  # Set to false if camera is not upside down
+
+# Storage Settings
+storage:
+  programs_dir: "data/programs"
+  photos_dir: "data/photos"
+  examples_dir: "data/examples"
+  max_programs: 50
+  max_photos: 100
+
+# Safety Settings
+safety:
+  emergency_stop_enabled: true
+  timeout_enabled: true
+  battery_warning_threshold: 7.5
+  connection_timeout: 30  # seconds
+
+# UI Settings
+ui:
+  theme: "kid-friendly"
+  show_camera: true
+  show_battery: true
+  enable_sounds: false
+  language: "en"
+
+# Made with Bob

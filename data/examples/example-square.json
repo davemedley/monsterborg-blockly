@@ -1,0 +1,48 @@
+{
+  "id": "example-square",
+  "name": "Draw a Square",
+  "description": "Drive in a square pattern",
+  "difficulty": "beginner",
+  "blocks": [
+    {"type": "led_preset", "color": "green"},
+    {"type": "pattern_square", "side_length": 0.5},
+    {"type": "led_preset", "color": "off"},
+    {"type": "stop"}
+  ],
+  "workspace_state": {
+    "blocks": {
+      "languageVersion": 0,
+      "blocks": [
+        {
+          "type": "start",
+          "x": 30,
+          "y": 30,
+          "deletable": false,
+          "next": {
+            "block": {
+              "type": "led_preset",
+              "fields": {"color": "green"},
+              "next": {
+                "block": {
+                  "type": "pattern_square",
+                  "fields": {"side_length": 0.5},
+                  "next": {
+                    "block": {
+                      "type": "led_preset",
+                      "fields": {"color": "off"},
+                      "next": {
+                        "block": {
+                          "type": "stop"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

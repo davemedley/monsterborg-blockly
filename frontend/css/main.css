@@ -1,0 +1,832 @@
+/* ==========================================================================
+   MonsterBorg Block-Based Coding Interface - Main Stylesheet
+   Kid-friendly, accessible, responsive design for ages 7+
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   CSS Custom Properties (Color Scheme & Design Tokens)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Category colors (Blockly toolbox) */
+  --color-movement: #4CAF50;
+  --color-leds: #FDD835;
+  --color-timing: #FF9800;
+  --color-patterns: #9C27B0;
+  --color-control: #F44336;
+
+  /* UI colors */
+  --color-primary: #1976D2;
+  --color-primary-dark: #1565C0;
+  --color-success: #388E3C;
+  --color-success-light: #4CAF50;
+  --color-danger: #D32F2F;
+  --color-danger-dark: #B71C1C;
+  --color-warning: #F57C00;
+  --color-neutral: #616161;
+  --color-neutral-light: #9E9E9E;
+
+  /* Background & surface */
+  --color-bg: #FAFAFA;
+  --color-surface: #FFFFFF;
+  --color-surface-raised: #FFFFFF;
+  --color-border: #E0E0E0;
+
+  /* Text colors - WCAG AA compliant on white/light backgrounds */
+  --color-text-primary: #212121;     /* 15.4:1 on white */
+  --color-text-secondary: #424242;   /* 12.6:1 on white */
+  --color-text-on-primary: #FFFFFF;  /* Used on colored backgrounds */
+  --color-text-on-dark: #FFFFFF;
+
+  /* Typography */
+  --font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-size-body: 16px;
+  --font-size-button: 18px;
+  --font-size-heading: 24px;
+  --font-size-small: 14px;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Touch targets */
+  --touch-target-min: 44px;
+
+  /* Transitions */
+  --transition-fast: 100ms ease;
+  --transition-normal: 200ms ease;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-round: 50%;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* --------------------------------------------------------------------------
+   Reset & Base Styles
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--font-size-body);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  margin: 0 0 var(--spacing-md);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Utility Classes
+   -------------------------------------------------------------------------- */
+.hidden {
+  display: none !important;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Layout - Responsive Grid
+   -------------------------------------------------------------------------- */
+.app-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: var(--spacing-md);
+  gap: var(--spacing-md);
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  grid-template-rows: 1fr auto;
+  gap: var(--spacing-md);
+  min-height: 0;
+}
+
+/* Blockly workspace area */
+#blocklyDiv {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  min-height: 400px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+/* Right sidebar panels */
+.sidebar {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  overflow-y: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Control Panel
+   -------------------------------------------------------------------------- */
+.control-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+   Buttons - Base Styles
+   -------------------------------------------------------------------------- */
+button,
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--touch-target-min);
+  min-height: var(--touch-target-min);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-button);
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition-fast),
+              border-color var(--transition-fast),
+              transform var(--transition-fast),
+              box-shadow var(--transition-fast);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:hover,
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+button:active,
+.btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+button:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+button:disabled,
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Button variants */
+.btn-run {
+  background-color: var(--color-success);
+  color: var(--color-text-on-dark);
+  border-color: var(--color-success);
+}
+
+.btn-run:hover:not(:disabled) {
+  background-color: var(--color-success-light);
+  border-color: var(--color-success-light);
+}
+
+.btn-stop {
+  background-color: var(--color-danger);
+  color: var(--color-text-on-dark);
+  border-color: var(--color-danger);
+}
+
+.btn-stop:hover:not(:disabled) {
+  background-color: var(--color-danger-dark);
+  border-color: var(--color-danger-dark);
+}
+
+.btn-save,
+.btn-load {
+  background-color: var(--color-primary);
+  color: var(--color-text-on-dark);
+  border-color: var(--color-primary);
+}
+
+.btn-save:hover:not(:disabled),
+.btn-load:hover:not(:disabled) {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+.btn-clear {
+  background-color: var(--color-neutral);
+  color: var(--color-text-on-dark);
+  border-color: var(--color-neutral);
+}
+
+.btn-clear:hover:not(:disabled) {
+  background-color: var(--color-neutral-light);
+  border-color: var(--color-neutral-light);
+}
+
+/* Stop button pulsing animation during execution */
+.btn-stop.active {
+  animation: pulse-stop 1s ease-in-out infinite;
+}
+
+/* --------------------------------------------------------------------------
+   Emergency Stop Button
+   -------------------------------------------------------------------------- */
+#emergency-stop {
+  position: fixed;
+  bottom: var(--spacing-lg);
+  right: var(--spacing-lg);
+  width: 64px;
+  height: 64px;
+  min-width: 56px;
+  min-height: 56px;
+  border-radius: var(--radius-round);
+  background-color: var(--color-danger);
+  color: var(--color-text-on-dark);
+  border: 4px solid var(--color-danger-dark);
+  font-size: 20px;
+  font-weight: 700;
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  cursor: pointer;
+  transition: transform var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+#emergency-stop:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(211, 47, 47, 0.4);
+}
+
+#emergency-stop:active {
+  transform: scale(0.95);
+}
+
+#emergency-stop:focus-visible {
+  outline: 4px solid #FFCDD2;
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   Camera Panel
+   -------------------------------------------------------------------------- */
+.camera-panel {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.camera-panel h3 {
+  font-size: var(--font-size-body);
+  margin: 0;
+}
+
+.camera-feed {
+  width: 100%;
+  aspect-ratio: 240 / 192;
+  background: #212121;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.camera-feed img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.camera-feed .placeholder {
+  color: var(--color-neutral-light);
+  font-size: var(--font-size-small);
+  text-align: center;
+  padding: var(--spacing-md);
+}
+
+.camera-controls {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.photo-thumbnail {
+  max-width: 120px;
+  max-height: 96px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--color-border);
+}
+
+/* --------------------------------------------------------------------------
+   Program Panel
+   -------------------------------------------------------------------------- */
+.program-panel {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.program-panel h3 {
+  font-size: var(--font-size-body);
+  margin: 0;
+}
+
+.program-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.program-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--touch-target-min);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.program-list-item:hover {
+  background-color: var(--color-bg);
+}
+
+.program-list-item:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.program-list-item .program-name {
+  font-weight: 500;
+  flex: 1;
+}
+
+.program-list-item .program-date {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+}
+
+.program-list-item .btn-delete {
+  min-width: 36px;
+  min-height: 36px;
+  padding: var(--spacing-xs);
+  background: transparent;
+  color: var(--color-danger);
+  border: none;
+  font-size: var(--font-size-body);
+}
+
+.program-list-item .btn-delete:hover {
+  background-color: #FFEBEE;
+}
+
+/* Example programs */
+.example-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.example-item {
+  display: flex;
+  flex-direction: column;
+  min-height: var(--touch-target-min);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.example-item:hover {
+  background-color: var(--color-bg);
+}
+
+.example-item:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.example-item .example-name {
+  font-weight: 500;
+}
+
+.example-item .example-description {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+}
+
+.example-item .example-difficulty {
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  align-self: flex-start;
+  margin-top: var(--spacing-xs);
+}
+
+/* --------------------------------------------------------------------------
+   Zoom Controls
+   -------------------------------------------------------------------------- */
+.zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.zoom-controls button {
+  min-width: var(--touch-target-min);
+  min-height: var(--touch-target-min);
+  padding: var(--spacing-sm);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-button);
+  color: var(--color-text-primary);
+}
+
+.zoom-controls button:hover:not(:disabled) {
+  background: var(--color-bg);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.zoom-controls .zoom-level {
+  min-width: 48px;
+  text-align: center;
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   Connection Status Indicator
+   -------------------------------------------------------------------------- */
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-small);
+  border-radius: var(--radius-sm);
+}
+
+.connection-status.connected {
+  color: var(--color-success);
+}
+
+.connection-status.disconnected {
+  color: var(--color-danger);
+  background-color: #FFEBEE;
+  font-weight: 600;
+}
+
+.connection-status .status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-round);
+  background: currentColor;
+}
+
+/* --------------------------------------------------------------------------
+   Progress Indicator
+   -------------------------------------------------------------------------- */
+.progress-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+}
+
+.progress-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--color-border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 3px;
+  transition: width var(--transition-normal);
+}
+
+/* --------------------------------------------------------------------------
+   Dialogs / Modals
+   -------------------------------------------------------------------------- */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 900;
+}
+
+.dialog {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-lg);
+  max-width: 400px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.dialog h2 {
+  font-size: var(--font-size-heading);
+  margin: 0 0 var(--spacing-md);
+}
+
+.dialog input[type="text"] {
+  width: 100%;
+  min-height: var(--touch-target-min);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-body);
+  font-family: var(--font-family);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast);
+}
+
+.dialog input[type="text"]:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.dialog-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: flex-end;
+  margin-top: var(--spacing-lg);
+}
+
+/* --------------------------------------------------------------------------
+   Blockly Toolbox Category Colors
+   -------------------------------------------------------------------------- */
+.blocklyToolboxCategory[colour="160"] .blocklyTreeLabel,
+.toolbox-movement {
+  color: var(--color-movement);
+}
+
+.blocklyToolboxCategory[colour="60"] .blocklyTreeLabel,
+.toolbox-leds {
+  color: var(--color-leds);
+}
+
+.blocklyToolboxCategory[colour="30"] .blocklyTreeLabel,
+.toolbox-timing {
+  color: var(--color-timing);
+}
+
+.blocklyToolboxCategory[colour="270"] .blocklyTreeLabel,
+.toolbox-patterns {
+  color: var(--color-patterns);
+}
+
+.blocklyToolboxCategory[colour="0"] .blocklyTreeLabel,
+.toolbox-control {
+  color: var(--color-control);
+}
+
+/* Ensure Blockly toolbox category rows meet touch target size */
+.blocklyToolboxDiv .blocklyTreeRow {
+  min-height: var(--touch-target-min);
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+/* --------------------------------------------------------------------------
+   Block Highlighting (Execution Feedback)
+   -------------------------------------------------------------------------- */
+.blockly-highlight-running .blocklyPath {
+  stroke: #FBC02D;
+  stroke-width: 3px;
+}
+
+.blockly-highlight-success .blocklyPath {
+  stroke: var(--color-success);
+  stroke-width: 3px;
+}
+
+.blockly-highlight-error .blocklyPath {
+  stroke: var(--color-danger);
+  stroke-width: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   Animations & Keyframes
+   -------------------------------------------------------------------------- */
+@keyframes pulse-stop {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(211, 47, 47, 0);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes flash-success {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+    background-color: rgba(76, 175, 80, 0.1);
+  }
+}
+
+.flash-success {
+  animation: flash-success 0.5s ease-in-out 2;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Layout - Tablet (768px+)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+  .main-content {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+  }
+
+  .sidebar {
+    grid-column: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: visible;
+  }
+
+  .camera-panel,
+  .program-panel {
+    flex: 1 1 250px;
+  }
+
+  #blocklyDiv {
+    min-height: 300px;
+  }
+
+  .control-panel {
+    justify-content: center;
+  }
+
+  #emergency-stop {
+    bottom: var(--spacing-md);
+    right: var(--spacing-md);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Layout - Large screens (1920px)
+   -------------------------------------------------------------------------- */
+@media screen and (min-width: 1200px) {
+  .main-content {
+    grid-template-columns: 1fr 350px;
+  }
+
+  #blocklyDiv {
+    min-height: 600px;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .app-container {
+    padding: var(--spacing-xl);
+    gap: var(--spacing-lg);
+  }
+
+  .main-content {
+    grid-template-columns: 1fr 400px;
+    gap: var(--spacing-lg);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Focus Styles for Keyboard Accessibility
+   -------------------------------------------------------------------------- */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Remove default outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* --------------------------------------------------------------------------
+   Scrollbar Styling
+   -------------------------------------------------------------------------- */
+.sidebar::-webkit-scrollbar,
+.program-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track,
+.program-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+.program-list::-webkit-scrollbar-thumb {
+  background: var(--color-neutral-light);
+  border-radius: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   Print Styles (hide non-essential elements)
+   -------------------------------------------------------------------------- */
+@media print {
+  #emergency-stop,
+  .control-panel,
+  .camera-panel,
+  .zoom-controls {
+    display: none;
+  }
+}

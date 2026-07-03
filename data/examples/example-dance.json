@@ -1,0 +1,70 @@
+{
+  "id": "example-dance",
+  "name": "Robot Dance",
+  "description": "The robot spins and flashes its LEDs",
+  "difficulty": "beginner",
+  "blocks": [
+    {"type": "led_preset", "color": "red"},
+    {"type": "spin_circle", "direction": "right", "rotations": 1},
+    {"type": "led_preset", "color": "green"},
+    {"type": "spin_circle", "direction": "left", "rotations": 1},
+    {"type": "led_preset", "color": "blue"},
+    {"type": "spin_circle", "direction": "right", "rotations": 2},
+    {"type": "led_preset", "color": "off"}
+  ],
+  "workspace_state": {
+    "blocks": {
+      "languageVersion": 0,
+      "blocks": [
+        {
+          "type": "start",
+          "x": 30,
+          "y": 30,
+          "deletable": false,
+          "next": {
+            "block": {
+              "type": "led_preset",
+              "fields": {"color": "red"},
+              "next": {
+                "block": {
+                  "type": "spin_circle",
+                  "fields": {"direction": "right", "rotations": 1},
+                  "next": {
+                    "block": {
+                      "type": "led_preset",
+                      "fields": {"color": "green"},
+                      "next": {
+                        "block": {
+                          "type": "spin_circle",
+                          "fields": {"direction": "left", "rotations": 1},
+                          "next": {
+                            "block": {
+                              "type": "led_preset",
+                              "fields": {"color": "blue"},
+                              "next": {
+                                "block": {
+                                  "type": "spin_circle",
+                                  "fields": {"direction": "right", "rotations": 2},
+                                  "next": {
+                                    "block": {
+                                      "type": "led_preset",
+                                      "fields": {"color": "off"}
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

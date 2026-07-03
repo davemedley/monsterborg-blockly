@@ -1,0 +1,71 @@
+{
+  "id": "example-dance",
+  "name": "Robot Dance",
+  "description": "Make the robot do a fun dance with spins, moves, and colorful lights!",
+  "difficulty": "beginner",
+  "created": "2026-05-20T00:00:00Z",
+  "modified": "2026-05-20T00:00:00Z",
+  "blocks": [
+    {
+      "type": "led_preset",
+      "color": "red"
+    },
+    {
+      "type": "spin_circle",
+      "direction": "right",
+      "rotations": 1
+    },
+    {
+      "type": "led_preset",
+      "color": "green"
+    },
+    {
+      "type": "spin_circle",
+      "direction": "left",
+      "rotations": 1
+    },
+    {
+      "type": "led_preset",
+      "color": "blue"
+    },
+    {
+      "type": "move_forward",
+      "distance": 0.3
+    },
+    {
+      "type": "move_backward",
+      "distance": 0.3
+    },
+    {
+      "type": "led_preset",
+      "color": "yellow"
+    },
+    {
+      "type": "repeat",
+      "count": 3,
+      "blocks": [
+        {
+          "type": "turn_right",
+          "angle": 90
+        },
+        {
+          "type": "wait",
+          "duration": 0.5
+        }
+      ]
+    },
+    {
+      "type": "led_preset",
+      "color": "purple"
+    },
+    {
+      "type": "spin_circle",
+      "direction": "right",
+      "rotations": 2
+    },
+    {
+      "type": "led_preset",
+      "color": "white"
+    }
+  ]
+}
