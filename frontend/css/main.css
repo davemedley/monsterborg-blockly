@@ -114,6 +114,10 @@ img {
   display: none !important;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -664,12 +668,20 @@ img.camera-feed {
   font-size: var(--font-size-small);
 }
 
+.camera-placeholder[hidden] {
+  display: none;
+}
+
 .photo-confirmation {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
   font-size: var(--font-size-small);
   color: var(--color-success);
+}
+
+.photo-confirmation[hidden] {
+  display: none;
 }
 
 .photo-thumb {
